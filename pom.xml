@@ -122,6 +122,11 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.20.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -144,7 +149,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.example.todoapp/org.example.todoapp.HelloApplication</mainClass>
+                            <mainClass>org.example.todoapp/org.example.todoapp.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
