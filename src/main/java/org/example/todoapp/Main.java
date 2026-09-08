@@ -17,18 +17,43 @@ public class Main extends Application {
     private AuthManager authManager;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
+
         authManager = new AuthManager();
 
-        if (authManager.isLoggedIn()) {
-//            showTodoPage(stage);
-            loadPage(stage, "/todoapp/ui/todo-view.fxml", "Todo List");
-        } else {
-//            showLoginPage(stage);
-            loadPage(stage, "/todoapp/ui/login-view.fxml", "Login");
-        }
+        authManager.getSession()
+                .loggedInProperty()
+                .addListener((obs, oldValue, newValue) -> {
+                    updatePage(stage);
+                });
+
+        updatePage(stage);
     }
 
+    private void updatePage(Stage stage) {
+
+        try {
+            if (authManager.isLoggedIn()) {
+
+                loadPage(
+                        stage,
+                        "/todoapp/ui/todo-view.fxml",
+                        "Todo List"
+                );
+
+            } else {
+
+                loadPage(
+                        stage,
+                        "/todoapp/ui/login-view.fxml",
+                        "Login"
+                );
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void loadPage(Stage stage, String viewLink, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(

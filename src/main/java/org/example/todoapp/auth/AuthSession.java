@@ -1,5 +1,8 @@
 package org.example.todoapp.auth;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
 public class AuthSession {
 
     private String uid;
@@ -7,6 +10,9 @@ public class AuthSession {
     private String idToken;
     private String refreshToken;
     private long expiresAt;
+
+    private final BooleanProperty loggedIn =
+            new SimpleBooleanProperty(false);
 
     private final TokenStorage tokenStorage;
 
@@ -22,7 +28,11 @@ public class AuthSession {
     }
 
     public boolean isLoggedIn() {
-        return idToken != null && !idToken.isBlank();
+        return loggedIn.get();
+    }
+
+    public BooleanProperty loggedInProperty() {
+        return loggedIn;
     }
 
     public void start(AuthResult authResult) {
@@ -45,6 +55,8 @@ public class AuthSession {
             System.out.println("Could not save authentication: "
                     + e.getMessage());
         }
+
+        loggedIn.set(true);
     }
 
     public void logout() {
@@ -61,6 +73,8 @@ public class AuthSession {
             System.out.println("Could not clear saved authentication: "
                     + e.getMessage());
         }
+
+        loggedIn.set(false);
     }
 
     public String getUid() {

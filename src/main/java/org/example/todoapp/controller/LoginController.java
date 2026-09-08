@@ -52,20 +52,6 @@ public class LoginController {
             // Login successful
             messageLabel.setText("Login successful!");
 
-            // We'll navigate to the Todo page here next.
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/todoapp/ui/todo-view.fxml")
-            );
-
-            Parent root = loader.load();
-
-            TodoController controller = loader.getController();
-            controller.setAuthManager(authManager);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            stage.setScene(new Scene(root, 800, 600));
-            stage.setTitle("Todo App - Todo");
 
         } catch (Exception e) {
             messageLabel.setText("Invalid email or password.");
