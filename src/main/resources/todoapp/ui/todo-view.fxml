@@ -23,4 +23,10 @@
 
 
     <Label text="Todo Screen" />
+    <VBox>
+        <Button
+                text="Logout"
+                onAction="#handleLogout"
+        />
+    </VBox>
 </VBox>

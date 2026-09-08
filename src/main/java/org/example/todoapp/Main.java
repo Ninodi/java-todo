@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.example.todoapp.auth.AuthManager;
 import org.example.todoapp.controller.LoginController;
+import org.example.todoapp.controller.TodoController;
 
 import java.io.IOException;
 
@@ -64,7 +65,13 @@ public class Main extends Application {
         Parent root = loader.load();
 
         if (viewLink.equals("/todoapp/ui/login-view.fxml")) {
+
             LoginController controller = loader.getController();
+            controller.setAuthManager(authManager);
+
+        } else if (viewLink.equals("/todoapp/ui/todo-view.fxml")) {
+
+            TodoController controller = loader.getController();
             controller.setAuthManager(authManager);
         }
 

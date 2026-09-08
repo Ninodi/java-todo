@@ -8,4 +8,8 @@ public class TodoController {
     public void setAuthManager(AuthManager authManager) {
         this.authManager = authManager;
     }
+
+    public void handleLogout () {
+        authManager.logout();
+    }
 }
