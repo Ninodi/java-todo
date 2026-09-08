@@ -15,7 +15,7 @@
         alignment="CENTER"
         spacing="15"
         styleClass="auth-page"
-        stylesheets="@../styles/application.css">
+        stylesheets="@../styles/dashboard.css">
 
     <padding>
         <Insets top="40" right="40" bottom="40" left="40"/>

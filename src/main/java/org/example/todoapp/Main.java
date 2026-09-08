@@ -4,12 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.example.todoapp.auth.AuthManager;
 import org.example.todoapp.controller.LoginController;
-import org.example.todoapp.controller.TodoController;
+import org.example.todoapp.controller.DashboardController;
 
 import java.io.IOException;
 
@@ -38,8 +36,8 @@ public class Main extends Application {
 
                 loadPage(
                         stage,
-                        "/todoapp/ui/todo-view.fxml",
-                        "Todo List"
+                        "/todoapp/ui/dashboard-view.fxml",
+                        "Dashboard"
                 );
 
             } else {
@@ -69,9 +67,9 @@ public class Main extends Application {
             LoginController controller = loader.getController();
             controller.setAuthManager(authManager);
 
-        } else if (viewLink.equals("/todoapp/ui/todo-view.fxml")) {
+        } else if (viewLink.equals("/todoapp/ui/dashboard-view.fxml")) {
 
-            TodoController controller = loader.getController();
+            DashboardController controller = loader.getController();
             controller.setAuthManager(authManager);
         }
 
