@@ -16,7 +16,12 @@ import org.example.todoapp.auth.AuthManager;
 import java.io.IOException;
 
 public class LoginController {
-    private final AuthManager authManager = new AuthManager();
+    private AuthManager authManager;
+
+    public void setAuthManager(AuthManager authManager) {
+        this.authManager = authManager;
+    }
+
     @FXML
     private TextField emailField;
 
@@ -54,6 +59,9 @@ public class LoginController {
 
             Parent root = loader.load();
 
+            TodoController controller = loader.getController();
+            controller.setAuthManager(authManager);
+
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             stage.setScene(new Scene(root, 800, 600));
@@ -72,6 +80,8 @@ public class LoginController {
         );
 
         Parent root = loader.load();
+        RegisterController controller = loader.getController();
+        controller.setAuthManager(authManager);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

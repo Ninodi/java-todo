@@ -37,6 +37,8 @@ public class FirebaseAuthService {
                 "returnSecureToken", true
         );
 
+
+
         String jsonBody = objectMapper.writeValueAsString(requestBody);
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -71,6 +73,8 @@ public class FirebaseAuthService {
                 "password", password,
                 "returnSecureToken", true
         );
+
+        System.out.println(requestBody);
 
         String jsonBody = objectMapper.writeValueAsString(requestBody);
 

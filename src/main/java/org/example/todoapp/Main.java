@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.example.todoapp.auth.AuthManager;
+import org.example.todoapp.controller.LoginController;
 
 import java.io.IOException;
 
@@ -28,46 +29,19 @@ public class Main extends Application {
         }
     }
 
-    private void showLoginPage(Stage stage) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(
-                        "/todoapp/ui/login-view.fxml"
-                )
-        );
-
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root, 800, 600);
-
-        stage.setTitle("Todo App - Login");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    private void showTodoPage(Stage stage) throws IOException{
-
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource(
-                        "/todoapp/ui/login-view.fxml"
-                )
-        );
-
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root, 800, 600);
-
-        stage.setTitle("Todo App - Login");
-        stage.setScene(scene);
-        stage.show();
-    }
 
     private void loadPage(Stage stage, String viewLink, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(viewLink)
         );
 
+
         Parent root = loader.load();
+
+        if (viewLink.equals("/todoapp/ui/login-view.fxml")) {
+            LoginController controller = loader.getController();
+            controller.setAuthManager(authManager);
+        }
 
         Scene scene = new Scene(root, 800, 600);
 
