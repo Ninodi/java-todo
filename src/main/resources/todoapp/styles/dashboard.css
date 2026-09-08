@@ -1,4 +1,65 @@
+.header{
+    -fx-padding: 15px;
+    -fx-background-color: #fff;
+    -fx-border-color: transparent transparent #B5B5B5 transparent;
+
+    /* Top: X pixels | Right, Bottom, Left: 0 pixels */
+    -fx-border-width: 1px 0 0 0;
+
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 70, 229, 0.4), 10, 0, 0, 4);
+}
+
 .bottom-navigation {
     -fx-padding: 15px;
-    -fx-background-color: indianred;
+    -fx-background-color: #fff;
+    -fx-border-color: #B5B5B5 transparent transparent transparent;
+
+    /* Top: X pixels | Right, Bottom, Left: 0 pixels */
+    -fx-border-width: 1px 0 0 0;
+
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 70, 229, 0.4), 10, 0, 0, -4);
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 10;
+}
+
+.nav-icon {
+    -fx-icon-color: #9CA3AF;
+    -fx-icon-size: 22px;
+}
+
+.nav-btn.active .nav-icon {
+    -fx-icon-color: #6366F1;
+}
+
+.nav-btn:hover .nav-icon {
+    -fx-icon-color: #4F46E5;
+}
+
+.add-todo-btn{
+    -fx-pref-width: 45px;
+    -fx-pref-height: 40px;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-background-color: #4F46E5;
+    -fx-cursor: hand;
+}
+
+.add-todo-btn:hover{
+    -fx-background-color: #6366F1;
+}
+
+.add-icon {
+    -fx-font-size: 30px;
+    -fx-text-fill: #fff;
+}
+
+.logout-btn {
+    -fx-background-color: red;
+    -fx-text-fill: white;
 }

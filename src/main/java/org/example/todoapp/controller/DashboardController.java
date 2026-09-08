@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import org.example.todoapp.auth.AuthManager;
+import javafx.scene.control.Button;
 
+import java.util.List;
 import java.io.IOException;
 
 public class DashboardController {
@@ -22,26 +24,46 @@ public class DashboardController {
 
 
     @FXML
+    private Button todosButton;
+
+    @FXML
+    private Button categoriesButton;
+
+    @FXML
+    private Button profileButton;
+
+    private List<Button> navigationButtons;
+
+    @FXML
     public void initialize() {
+
+        navigationButtons = List.of(
+                todosButton,
+                categoriesButton,
+                profileButton
+        );
+
         showTodos();
     }
-
 
     @FXML
     public void showTodos() {
         loadView("/todoapp/ui/TodoView.fxml");
+        setActiveButton(todosButton);
     }
 
 
     @FXML
     public void showCategories() {
         loadView("/todoapp/ui/CategoriesView.fxml");
+        setActiveButton(categoriesButton);
     }
 
 
     @FXML
     public void showProfile() {
         loadView("/todoapp/ui/ProfileView.fxml");
+        setActiveButton(profileButton);
     }
 
 
@@ -63,5 +85,14 @@ public class DashboardController {
     @FXML
     public void handleLogout() {
         authManager.logout();
+    }
+
+    private void setActiveButton(Button activeButton) {
+
+        navigationButtons.forEach(button ->
+                button.getStyleClass().remove("active")
+        );
+
+        activeButton.getStyleClass().add("active");
     }
 }

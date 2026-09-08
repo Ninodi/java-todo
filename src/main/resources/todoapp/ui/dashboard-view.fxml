@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 <?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.layout.VBox?>
 <BorderPane
         xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
@@ -23,7 +24,7 @@
                 styleClass="header">
 
             <Label
-                    text="Todo App"
+                    text="Welcome Back!"
                     styleClass="app-title"/>
 
             <HBox
@@ -31,7 +32,8 @@
                     HBox.hgrow="ALWAYS">
 
                 <Button
-                        text="Logout"
+                        styleClass="logout-btn"
+                        text="Log Out"
                         onAction="#handleLogout"/>
 
             </HBox>
@@ -53,22 +55,67 @@
                 spacing="40"
                 styleClass="bottom-navigation">
 
-            <Button onAction="#showTodos">
+            <!-- TODOS -->
+            <Button
+                    fx:id="todosButton"
+                    onAction="#showTodos"
+                    styleClass="nav-btn">
+
                 <graphic>
-                    <FontIcon iconLiteral="fas-tasks"/>
+                    <FontIcon
+                            iconLiteral="fas-tasks"
+                            styleClass="nav-icon"/>
                 </graphic>
+
             </Button>
 
-            <Button onAction="#showCategories">
+
+            <!-- CATEGORIES -->
+            <Button
+                    fx:id="categoriesButton"
+                    onAction="#showCategories"
+                    styleClass="nav-btn">
+
                 <graphic>
-                    <FontIcon iconLiteral="fas-folder"/>
+                    <FontIcon
+                            iconLiteral="fas-folder"
+                            styleClass="nav-icon"/>
                 </graphic>
+
             </Button>
 
-            <Button onAction="#showProfile">
+            <VBox alignment="CENTER" styleClass="add-todo-btn">
+                <Label
+                        text="+"
+                        styleClass="add-icon"/>
+            </VBox>
+
+
+            <!-- PROFILE -->
+            <Button
+                    fx:id="statsButton"
+                    onAction="#showProfile"
+                    styleClass="nav-btn">
+
                 <graphic>
-                    <FontIcon iconLiteral="fas-user"/>
+                    <FontIcon
+                            iconLiteral="fas-chart-pie"
+                            styleClass="nav-icon"/>
                 </graphic>
+
+            </Button>
+            <!-- PROFILE -->
+            <Button
+                    fx:id="profileButton"
+                    onAction="#showProfile"
+                    styleClass="nav-btn">
+
+                <graphic>
+                    <FontIcon
+                            iconLiteral="fas-user"
+                            styleClass="nav-icon"/>
+                </graphic>
+
             </Button>
 
         </HBox>
