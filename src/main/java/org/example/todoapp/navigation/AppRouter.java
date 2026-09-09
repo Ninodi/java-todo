@@ -1,0 +1,78 @@
+package org.example.todoapp.navigation;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import org.example.todoapp.auth.AuthManager;
+import org.example.todoapp.controller.AddTodoController;
+import org.example.todoapp.controller.DashboardController;
+import org.example.todoapp.controller.LoginController;
+import org.example.todoapp.controller.RegisterController;
+
+import java.io.IOException;
+
+public class AppRouter {
+
+    private final Stage stage;
+    private final AuthManager authManager;
+
+    public AppRouter(
+            Stage stage,
+            AuthManager authManager
+    ) {
+        this.stage = stage;
+        this.authManager = authManager;
+    }
+
+    public void navigateTo(AppPage page) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(page.getViewPath())
+            );
+
+            Parent root = loader.load();
+
+            configureController(loader.getController());
+
+            Scene scene = new Scene(root, 800, 600);
+
+            stage.setTitle(
+                    "Todo App - " + page.getTitle()
+            );
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void configureController(Object controller) {
+
+        if (controller instanceof LoginController loginController) {
+
+            loginController.setAuthManager(authManager);
+            loginController.setRouter(this);
+
+        } else if (controller instanceof RegisterController registerController) {
+
+            registerController.setAuthManager(authManager);
+            registerController.setRouter(this);
+
+        } else if (controller instanceof DashboardController dashboardController) {
+
+            dashboardController.setAuthManager(authManager);
+            dashboardController.setRouter(this);
+
+        } else if (controller instanceof AddTodoController addTodoController) {
+
+            addTodoController.setRouter(this);
+        }
+    }
+
+}

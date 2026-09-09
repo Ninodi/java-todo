@@ -42,7 +42,7 @@
 }
 
 .add-todo-btn{
-    -fx-pref-width: 45px;
+    -fx-pref-width: 40px;
     -fx-pref-height: 40px;
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
@@ -55,8 +55,8 @@
 }
 
 .add-icon {
-    -fx-font-size: 30px;
-    -fx-text-fill: #fff;
+    -fx-icon-size: 22px;
+    -fx-icon-color: #fff;
 }
 
 .logout-btn {

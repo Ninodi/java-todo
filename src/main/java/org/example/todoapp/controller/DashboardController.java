@@ -1,18 +1,25 @@
 package org.example.todoapp.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import org.example.todoapp.auth.AuthManager;
 import javafx.scene.control.Button;
-
+import org.example.todoapp.navigation.AppPage;
+import org.example.todoapp.navigation.AppRouter;
 import java.util.List;
 import java.io.IOException;
 
 public class DashboardController {
 
     private AuthManager authManager;
+    private AppRouter router;
+
+    public void setRouter(AppRouter router) {
+        this.router = router;
+    }
 
     @FXML
     private StackPane contentArea;
@@ -31,6 +38,9 @@ public class DashboardController {
 
     @FXML
     private Button profileButton;
+
+    @FXML
+    private Button addTodoButton;
 
     private List<Button> navigationButtons;
 
@@ -94,5 +104,10 @@ public class DashboardController {
         );
 
         activeButton.getStyleClass().add("active");
+    }
+
+    @FXML
+    public void showAddTodoView() {
+        router.navigateTo(AppPage.ADD_TODO);
     }
 }

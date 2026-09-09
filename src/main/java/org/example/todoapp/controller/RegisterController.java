@@ -11,6 +11,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.todoapp.auth.AuthManager;
+import org.example.todoapp.navigation.AppPage;
+import org.example.todoapp.navigation.AppRouter;
 
 import java.io.IOException;
 
@@ -21,6 +23,11 @@ public class RegisterController {
         this.authManager = authManager;
     }
 
+    private AppRouter router;
+
+    public void setRouter(AppRouter router) {
+        this.router = router;
+    }
     @FXML
     private TextField emailField;
 
@@ -64,19 +71,7 @@ public class RegisterController {
     }
 
     @FXML
-    private void handleLogin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/todoapp/ui/login-view.fxml")
-        );
-
-        Parent root = loader.load();
-
-        LoginController controller = loader.getController();
-        controller.setAuthManager(authManager);
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        stage.setScene(new Scene(root, 800, 600));
-        stage.setTitle("Todo App - Login");
+    private void handleLogin() {
+        router.navigateTo(AppPage.LOGIN);
     }
 }

@@ -2,18 +2,13 @@ package org.example.todoapp.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import org.example.todoapp.auth.AuthManager;
-
-import java.io.IOException;
+import org.example.todoapp.navigation.AppPage;
+import org.example.todoapp.navigation.AppRouter;
 
 public class LoginController {
     private AuthManager authManager;
@@ -22,6 +17,11 @@ public class LoginController {
         this.authManager = authManager;
     }
 
+    private AppRouter router;
+
+    public void setRouter(AppRouter router) {
+        this.router = router;
+    }
     @FXML
     private TextField emailField;
 
@@ -58,20 +58,9 @@ public class LoginController {
             System.out.println("Login failed: " + e.getMessage());
         }
     }
+
     @FXML
-    private void handleRegister(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/todoapp/ui/register-view.fxml")
-        );
-
-        Parent root = loader.load();
-        RegisterController controller = loader.getController();
-        controller.setAuthManager(authManager);
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        stage.setScene(new Scene(root, 800, 600));
-        stage.setTitle("Todo App - Register");
+    private void handleRegister() {
+        router.navigateTo(AppPage.REGISTER);
     }
 }

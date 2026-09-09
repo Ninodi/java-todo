@@ -84,11 +84,18 @@
 
             </Button>
 
-            <VBox alignment="CENTER" styleClass="add-todo-btn">
-                <Label
-                        text="+"
-                        styleClass="add-icon"/>
-            </VBox>
+            <Button
+                    fx:id="addTodoButton"
+                    onAction="#showAddTodoView"
+                    styleClass="add-todo-btn">
+
+                <graphic>
+                    <FontIcon
+                            iconLiteral="fas-plus"
+                            styleClass="add-icon"/>
+                </graphic>
+
+            </Button>
 
 
             <!-- PROFILE -->
