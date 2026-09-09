@@ -20,4 +20,17 @@ public class FirebaseConfig {
 
         return apiKey;
     }
+
+
+    public static String getProjectId() {
+        String projectId = "java-todo-ecd42";
+
+        if (projectId == null || projectId.isBlank()) {
+            throw new IllegalStateException(
+                    "FIREBASE_PROJECT_ID is missing from .env"
+            );
+        }
+
+        return projectId;
+    }
 }
