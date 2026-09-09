@@ -10,6 +10,7 @@ import org.example.todoapp.controller.AddTodoController;
 import org.example.todoapp.controller.DashboardController;
 import org.example.todoapp.controller.LoginController;
 import org.example.todoapp.controller.RegisterController;
+import org.example.todoapp.database.TodoService;
 
 import java.io.IOException;
 
@@ -17,6 +18,7 @@ public class AppRouter {
 
     private final Stage stage;
     private final AuthManager authManager;
+    private final TodoService todoService;
 
     public AppRouter(
             Stage stage,
@@ -24,6 +26,10 @@ public class AppRouter {
     ) {
         this.stage = stage;
         this.authManager = authManager;
+        this.todoService =
+                new TodoService(
+                        authManager.getSession()
+                );
     }
 
     public void navigateTo(AppPage page) {
@@ -66,12 +72,14 @@ public class AppRouter {
 
         } else if (controller instanceof DashboardController dashboardController) {
 
+            dashboardController.setTodoService(todoService);
             dashboardController.setAuthManager(authManager);
             dashboardController.setRouter(this);
 
         } else if (controller instanceof AddTodoController addTodoController) {
 
             addTodoController.setRouter(this);
+            addTodoController.setTodoService(todoService);
         }
     }
 

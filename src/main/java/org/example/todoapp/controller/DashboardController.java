@@ -1,12 +1,12 @@
 package org.example.todoapp.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import org.example.todoapp.auth.AuthManager;
 import javafx.scene.control.Button;
+import org.example.todoapp.database.TodoService;
 import org.example.todoapp.navigation.AppPage;
 import org.example.todoapp.navigation.AppRouter;
 import java.util.List;
@@ -16,6 +16,7 @@ public class DashboardController {
 
     private AuthManager authManager;
     private AppRouter router;
+    private TodoService todoService;
 
     public void setRouter(AppRouter router) {
         this.router = router;
@@ -26,7 +27,9 @@ public class DashboardController {
 
 
     public void setAuthManager(AuthManager authManager) {
+
         this.authManager = authManager;
+        showTodos();
     }
 
 
@@ -53,12 +56,11 @@ public class DashboardController {
                 profileButton
         );
 
-        showTodos();
     }
 
     @FXML
     public void showTodos() {
-        loadView("/todoapp/ui/TodoView.fxml");
+        loadView("/todoapp/ui/TodosView.fxml");
         setActiveButton(todosButton);
     }
 
@@ -80,9 +82,21 @@ public class DashboardController {
     private void loadView(String fxml) {
 
         try {
-            Node view = FXMLLoader.load(
-                    getClass().getResource(fxml)
-            );
+
+            FXMLLoader loader =
+                    new FXMLLoader(
+                            getClass().getResource(fxml)
+                    );
+
+            Node view = loader.load();
+
+            if (fxml.equals("/todoapp/ui/TodosView.fxml")) {
+
+                TodosController controller =
+                        loader.getController();
+
+                controller.setTodoService(todoService);
+            }
 
             contentArea.getChildren().setAll(view);
 
@@ -109,5 +123,9 @@ public class DashboardController {
     @FXML
     public void showAddTodoView() {
         router.navigateTo(AppPage.ADD_TODO);
+    }
+
+    public void setTodoService(TodoService todoService) {
+        this.todoService = todoService;
     }
 }

@@ -14,7 +14,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-
         authManager = new AuthManager();
 
         router = new AppRouter(

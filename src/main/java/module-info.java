@@ -19,8 +19,6 @@ module org.example.todoapp {
 
     opens org.example.todoapp to javafx.fxml;
     exports org.example.todoapp;
-    exports org.example.todoapp.persistence;
-    opens org.example.todoapp.persistence to javafx.fxml;
     exports org.example.todoapp.model;
     opens org.example.todoapp.model to javafx.fxml;
     opens org.example.todoapp.controller to javafx.fxml;

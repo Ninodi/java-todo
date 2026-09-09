@@ -1,0 +1,180 @@
+/* =========================
+   Add Todo Page
+   ========================= */
+
+.add-todo-page {
+    -fx-background-color: #f7f8fc;
+}
+
+
+/* =========================
+   Header
+   ========================= */
+
+.form-header {
+    -fx-padding: 0 0 10 0;
+}
+
+.page-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #202124;
+}
+
+.page-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7a7f87;
+}
+
+
+/* =========================
+   Back Button
+   ========================= */
+
+.back-button {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e1e4e8;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+
+    -fx-font-size: 20px;
+    -fx-text-fill: #444;
+
+    -fx-min-width: 42px;
+    -fx-min-height: 42px;
+
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #f0f1f5;
+}
+
+
+/* =========================
+   Form Card
+   ========================= */
+
+.todo-form {
+    -fx-background-color: white;
+
+    -fx-background-radius: 16px;
+
+    -fx-border-color: #e8e9ed;
+    -fx-border-radius: 16px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 30px;
+}
+
+
+/* =========================
+   Field Labels
+   ========================= */
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #363a40;
+}
+
+
+/* =========================
+   Text Fields
+   ========================= */
+
+.form-field {
+    -fx-background-color: #fafbfc;
+
+    -fx-border-color: #dfe2e7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 9px;
+
+    -fx-background-radius: 9px;
+
+    -fx-padding: 11px 13px;
+
+    -fx-font-size: 14px;
+}
+
+.form-field:focused {
+    -fx-background-color: white;
+
+    -fx-border-color: #6366f1;
+    -fx-border-width: 2px;
+}
+
+
+/* =========================
+   Text Area
+   ========================= */
+
+.text-area {
+    -fx-background-color: #fafbfc;
+    -fx-background-radius: 9px;
+
+    -fx-border-color: #dfe2e7;
+    -fx-border-radius: 9px;
+}
+
+.text-area:focused {
+    -fx-background-color: white;
+
+    -fx-border-color: #6366f1;
+    -fx-border-width: 2px;
+}
+
+.text-area .content {
+    -fx-background-color: #fafbfc;
+    -fx-background-radius: 9px;
+}
+
+
+/* =========================
+   Date Picker
+   ========================= */
+
+.date-picker {
+    -fx-background-color: #fafbfc;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #f0f1f5;
+}
+
+
+/* =========================
+   Actions
+   ========================= */
+
+.form-actions {
+    -fx-padding: 10px 0 0 0;
+}
+
+.save-button {
+    -fx-background-color: #6366f1;
+    -fx-text-fill: white;
+
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 9px;
+
+    -fx-padding: 11px 24px;
+
+    -fx-cursor: hand;
+}
+
+.save-button:hover {
+    -fx-background-color: #5558e8;
+}
+
+.save-button:pressed {
+    -fx-background-color: #4f51d8;
+}
