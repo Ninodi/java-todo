@@ -10,7 +10,7 @@
 
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane
+<StackPane
         xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
         fx:controller="org.example.todoapp.controller.DashboardController"
@@ -20,213 +20,218 @@
     <!-- =========================
          HEADER
          ========================= -->
-
-    <top>
-
-        <HBox
-                alignment="CENTER_LEFT"
-                styleClass="header">
-
-            <VBox
-                    spacing="3"
-                    HBox.hgrow="ALWAYS">
-
-                <Label
-                        text="Todo App"
-                        styleClass="app-title"/>
-
-                <Label
-                        text="Stay organized, get things done."
-                        styleClass="app-subtitle"/>
-
-            </VBox>
-
-
-            <Button
-                    onAction="#handleLogout"
-                    styleClass="logout-btn">
-
-                <graphic>
-                    <FontIcon
-                            iconLiteral="fas-sign-out-alt"
-                            styleClass="logout-icon"/>
-                </graphic>
-
-                <tooltip>
-                    <javafx.scene.control.Tooltip text="Log out"/>
-                </tooltip>
-
-            </Button>
-
-        </HBox>
-
-    </top>
-
-
-    <!-- =========================
-         MAIN CONTENT
-         ========================= -->
-
-    <center>
-
-        <StackPane
-                fx:id="contentArea"
-                styleClass="content-area">
-
-            <padding>
-                <Insets
-                        top="25"
-                        right="30"
-                        bottom="20"
-                        left="30"/>
-            </padding>
-
-        </StackPane>
-
-    </center>
-
-
-    <!-- =========================
-         BOTTOM NAVIGATION
-         ========================= -->
-
-    <bottom>
-
-        <StackPane
-                styleClass="bottom-navigation-container">
+    <BorderPane>
+        <top>
 
             <HBox
-                    alignment="CENTER"
-                    fillHeight="true"
-                    styleClass="bottom-navigation">
+                    alignment="CENTER_LEFT"
+                    styleClass="header">
 
-                <!-- TODOS -->
-
-                <Button
-                        fx:id="todosButton"
-                        onAction="#showTodos"
-                        styleClass="nav-btn"
+                <VBox
+                        spacing="3"
                         HBox.hgrow="ALWAYS">
 
-                    <graphic>
-                        <VBox
-                                alignment="CENTER"
-                                spacing="5">
+                    <Label
+                            text="Todo App"
+                            styleClass="app-title"/>
 
-                            <FontIcon
-                                    iconLiteral="fas-tasks"
-                                    styleClass="nav-icon"/>
+                    <Label
+                            text="Stay organized, get things done."
+                            styleClass="app-subtitle"/>
 
-                            <Label
-                                    text="Todos"
-                                    styleClass="nav-label"/>
+                </VBox>
 
-                        </VBox>
-                    </graphic>
-
-                </Button>
-
-
-                <!-- CATEGORIES -->
 
                 <Button
-                        fx:id="categoriesButton"
-                        onAction="#showCategories"
-                        styleClass="nav-btn"
-                        HBox.hgrow="ALWAYS">
-
-                    <graphic>
-                        <VBox
-                                alignment="CENTER"
-                                spacing="5">
-
-                            <FontIcon
-                                    iconLiteral="fas-folder"
-                                    styleClass="nav-icon"/>
-
-                            <Label
-                                    text="Categories"
-                                    styleClass="nav-label"/>
-
-                        </VBox>
-                    </graphic>
-
-                </Button>
-
-
-                <!-- ADD -->
-
-                <Button
-                        fx:id="addTodoButton"
-                        onAction="#showAddTodoView"
-                        styleClass="add-todo-btn">
+                        onAction="#handleLogout"
+                        styleClass="logout-btn">
 
                     <graphic>
                         <FontIcon
-                                iconLiteral="fas-plus"
-                                styleClass="add-icon"/>
+                                iconLiteral="fas-sign-out-alt"
+                                styleClass="logout-icon"/>
                     </graphic>
 
-                </Button>
-
-
-                <!-- STATS -->
-
-                <Button
-                        fx:id="statsButton"
-                        onAction="#showProfile"
-                        styleClass="nav-btn"
-                        HBox.hgrow="ALWAYS">
-
-                    <graphic>
-                        <VBox
-                                alignment="CENTER"
-                                spacing="5">
-
-                            <FontIcon
-                                    iconLiteral="fas-chart-pie"
-                                    styleClass="nav-icon"/>
-
-                            <Label
-                                    text="Stats"
-                                    styleClass="nav-label"/>
-
-                        </VBox>
-                    </graphic>
-
-                </Button>
-
-
-                <!-- PROFILE -->
-
-                <Button
-                        fx:id="profileButton"
-                        onAction="#showProfile"
-                        styleClass="nav-btn"
-                        HBox.hgrow="ALWAYS">
-
-                    <graphic>
-                        <VBox
-                                alignment="CENTER"
-                                spacing="5">
-
-                            <FontIcon
-                                    iconLiteral="fas-user"
-                                    styleClass="nav-icon"/>
-
-                            <Label
-                                    text="Profile"
-                                    styleClass="nav-label"/>
-
-                        </VBox>
-                    </graphic>
+                    <tooltip>
+                        <javafx.scene.control.Tooltip text="Log out"/>
+                    </tooltip>
 
                 </Button>
 
             </HBox>
 
-        </StackPane>
+        </top>
 
-    </bottom>
 
-</BorderPane>
+        <!-- =========================
+             MAIN CONTENT
+             ========================= -->
+
+        <center>
+
+            <StackPane
+                    fx:id="contentArea"
+                    styleClass="content-area">
+
+                <padding>
+                    <Insets
+                            top="25"
+                            right="30"
+                            bottom="20"
+                            left="30"/>
+                </padding>
+
+            </StackPane>
+
+        </center>
+
+
+        <!-- =========================
+             BOTTOM NAVIGATION
+             ========================= -->
+
+        <bottom>
+
+            <StackPane
+                    styleClass="bottom-navigation-container">
+
+                <HBox
+                        alignment="CENTER"
+                        fillHeight="true"
+                        styleClass="bottom-navigation">
+
+                    <!-- TODOS -->
+
+                    <Button
+                            fx:id="todosButton"
+                            onAction="#showTodos"
+                            styleClass="nav-btn"
+                            HBox.hgrow="ALWAYS">
+
+                        <graphic>
+                            <VBox
+                                    alignment="CENTER"
+                                    spacing="5">
+
+                                <FontIcon
+                                        iconLiteral="fas-tasks"
+                                        styleClass="nav-icon"/>
+
+                                <Label
+                                        text="Todos"
+                                        styleClass="nav-label"/>
+
+                            </VBox>
+                        </graphic>
+
+                    </Button>
+
+
+                    <!-- CATEGORIES -->
+
+                    <Button
+                            fx:id="categoriesButton"
+                            onAction="#showCategories"
+                            styleClass="nav-btn"
+                            HBox.hgrow="ALWAYS">
+
+                        <graphic>
+                            <VBox
+                                    alignment="CENTER"
+                                    spacing="5">
+
+                                <FontIcon
+                                        iconLiteral="fas-folder"
+                                        styleClass="nav-icon"/>
+
+                                <Label
+                                        text="Categories"
+                                        styleClass="nav-label"/>
+
+                            </VBox>
+                        </graphic>
+
+                    </Button>
+
+
+                    <!-- ADD -->
+
+                    <Button
+                            fx:id="addTodoButton"
+                            onAction="#showAddTodoView"
+                            styleClass="add-todo-btn">
+
+                        <graphic>
+                            <FontIcon
+                                    iconLiteral="fas-plus"
+                                    styleClass="add-icon"/>
+                        </graphic>
+
+                    </Button>
+
+
+                    <!-- STATS -->
+
+                    <Button
+                            fx:id="statsButton"
+                            onAction="#showProfile"
+                            styleClass="nav-btn"
+                            HBox.hgrow="ALWAYS">
+
+                        <graphic>
+                            <VBox
+                                    alignment="CENTER"
+                                    spacing="5">
+
+                                <FontIcon
+                                        iconLiteral="fas-chart-pie"
+                                        styleClass="nav-icon"/>
+
+                                <Label
+                                        text="Stats"
+                                        styleClass="nav-label"/>
+
+                            </VBox>
+                        </graphic>
+
+                    </Button>
+
+
+                    <!-- PROFILE -->
+
+                    <Button
+                            fx:id="profileButton"
+                            onAction="#showProfile"
+                            styleClass="nav-btn"
+                            HBox.hgrow="ALWAYS">
+
+                        <graphic>
+                            <VBox
+                                    alignment="CENTER"
+                                    spacing="5">
+
+                                <FontIcon
+                                        iconLiteral="fas-user"
+                                        styleClass="nav-icon"/>
+
+                                <Label
+                                        text="Profile"
+                                        styleClass="nav-label"/>
+
+                            </VBox>
+                        </graphic>
+
+                    </Button>
+
+                </HBox>
+
+            </StackPane>
+
+        </bottom>
+    </BorderPane>
+
+    <StackPane
+            fx:id="modalContainer"
+            visible="false"
+            styleClass="modal-container"/>
+</StackPane>

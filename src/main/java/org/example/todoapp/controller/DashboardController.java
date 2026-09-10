@@ -3,9 +3,14 @@ package org.example.todoapp.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.example.todoapp.auth.AuthManager;
 import javafx.scene.control.Button;
+import org.example.todoapp.database.CategoriesService;
 import org.example.todoapp.database.TodoService;
 import org.example.todoapp.navigation.AppPage;
 import org.example.todoapp.navigation.AppRouter;
@@ -14,9 +19,11 @@ import java.io.IOException;
 
 public class DashboardController {
 
+    public StackPane modalContainer;
     private AuthManager authManager;
     private AppRouter router;
     private TodoService todoService;
+    private CategoriesService categoriesService;
 
     public void setRouter(AppRouter router) {
         this.router = router;
@@ -98,6 +105,15 @@ public class DashboardController {
                 controller.setTodoService(todoService);
             }
 
+            if (fxml.equals("/todoapp/ui/CategoriesView.fxml")) {
+
+                CategoriesController controller =
+                        loader.getController();
+
+                controller.setDashboardController(this);
+                controller.setCategoriesService(categoriesService);
+            }
+
             contentArea.getChildren().setAll(view);
 
         } catch (IOException e) {
@@ -125,7 +141,44 @@ public class DashboardController {
         router.navigateTo(AppPage.ADD_TODO);
     }
 
+    @FXML
+    public void openCategoryModal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/todoapp/ui/AddCategoryView.fxml")
+            );
+
+            Parent root = loader.load();
+
+            AddCategoryController controller = loader.getController();
+
+            controller.setCategoriesService(categoriesService);
+
+            controller.setOnCategoryCreated(() -> {
+                showCategories();
+                closeCategoryModal();
+            });
+
+            controller.setOnClose(this::closeCategoryModal);
+
+            modalContainer.getChildren().add(root);
+            modalContainer.setVisible(true);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void closeCategoryModal() {
+        modalContainer.getChildren().clear();
+        modalContainer.setVisible(false);
+    }
+
     public void setTodoService(TodoService todoService) {
         this.todoService = todoService;
+    }
+
+    public void setCategoriesService(CategoriesService categoriesService) {
+        this.categoriesService = categoriesService;
     }
 }

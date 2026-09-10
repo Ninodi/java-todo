@@ -6,10 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import org.example.todoapp.auth.AuthManager;
-import org.example.todoapp.controller.AddTodoController;
-import org.example.todoapp.controller.DashboardController;
-import org.example.todoapp.controller.LoginController;
-import org.example.todoapp.controller.RegisterController;
+import org.example.todoapp.controller.*;
+import org.example.todoapp.database.CategoriesService;
 import org.example.todoapp.database.TodoService;
 
 import java.io.IOException;
@@ -19,6 +17,7 @@ public class AppRouter {
     private final Stage stage;
     private final AuthManager authManager;
     private final TodoService todoService;
+    private final CategoriesService categoriesService;
 
     public AppRouter(
             Stage stage,
@@ -30,6 +29,7 @@ public class AppRouter {
                 new TodoService(
                         authManager.getSession()
                 );
+        this.categoriesService = new CategoriesService(authManager.getSession());
     }
 
     public void navigateTo(AppPage page) {
@@ -73,13 +73,14 @@ public class AppRouter {
         } else if (controller instanceof DashboardController dashboardController) {
 
             dashboardController.setTodoService(todoService);
+            dashboardController.setCategoriesService(categoriesService);
             dashboardController.setAuthManager(authManager);
             dashboardController.setRouter(this);
 
         } else if (controller instanceof AddTodoController addTodoController) {
-
             addTodoController.setRouter(this);
             addTodoController.setTodoService(todoService);
+
         }
     }
 

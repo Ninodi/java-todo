@@ -1,0 +1,174 @@
+/* =========================================
+   CATEGORY CREATION MODAL
+   ========================================= */
+
+.category-modal {
+    -fx-background-color: white;
+
+    -fx-background-radius: 18px;
+
+    -fx-border-color: #e8e9ed;
+    -fx-border-width: 1px;
+    -fx-border-radius: 18px;
+
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(30, 32, 40, 0.12),
+                    25,
+                    0.15,
+                    0,
+                    8
+            );
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.modal-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #202124;
+}
+
+.modal-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #858a93;
+}
+
+
+/* =========================================
+   FIELD LABELS
+   ========================================= */
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #454951;
+}
+
+
+/* =========================================
+   TEXT FIELD
+   ========================================= */
+
+.text-field {
+    -fx-background-color: #f7f8fc;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e3e5eb;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 11px 13px;
+
+    -fx-font-size: 13px;
+    -fx-text-fill: #30343b;
+
+    -fx-prompt-text-fill: #a5a9b2;
+}
+
+.text-field:hover {
+    -fx-border-color: #cfd2dc;
+}
+
+.text-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #6366f1;
+    -fx-border-width: 1.5px;
+}
+
+
+/* =========================================
+   COLOR PICKER
+   ========================================= */
+
+.color-picker {
+    -fx-background-color: #f7f8fc;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e3e5eb;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+
+    -fx-font-size: 13px;
+
+    -fx-pref-height: 42px;
+}
+
+.color-picker:hover {
+    -fx-border-color: #cfd2dc;
+}
+
+.color-picker:focused {
+    -fx-border-color: #6366f1;
+}
+
+
+/* =========================================
+   CANCEL BUTTON
+   ========================================= */
+
+.cancel-btn {
+    -fx-background-color: transparent;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e3e5eb;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 10px 18px;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #555a64;
+
+    -fx-cursor: hand;
+}
+
+.cancel-btn:hover {
+    -fx-background-color: #f7f8fc;
+}
+
+.cancel-btn:pressed {
+    -fx-background-color: #eef0f5;
+}
+
+
+/* =========================================
+   CREATE BUTTON
+   ========================================= */
+
+.create-btn {
+    -fx-background-color: #6366f1;
+
+    -fx-background-radius: 10px;
+
+    -fx-padding: 10px 20px;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: white;
+
+    -fx-cursor: hand;
+}
+
+.create-btn:hover {
+    -fx-background-color: #5558e8;
+}
+
+.create-btn:pressed {
+    -fx-background-color: #4f51d8;
+}
+
+.modal-container{
+    -fx-pref-width: 500px;
+    -fx-pref-height: 500px;
+}
